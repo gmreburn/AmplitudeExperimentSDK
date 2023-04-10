@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amplitude", "Amplitude\Amplitude.csproj", "{89E33B17-D481-47E4-A696-1A2BDBCF81EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmplitudeTests", "AmplitudeTests\AmplitudeTests.csproj", "{D0211F2C-88B5-4D28-8BF4-2E8C73DD8A75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{319DF49C-3A30-4C78-B910-C284E4ADDCBF}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89E33B17-D481-47E4-A696-1A2BDBCF81EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E33B17-D481-47E4-A696-1A2BDBCF81EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E33B17-D481-47E4-A696-1A2BDBCF81EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E33B17-D481-47E4-A696-1A2BDBCF81EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0211F2C-88B5-4D28-8BF4-2E8C73DD8A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0211F2C-88B5-4D28-8BF4-2E8C73DD8A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0211F2C-88B5-4D28-8BF4-2E8C73DD8A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0211F2C-88B5-4D28-8BF4-2E8C73DD8A75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3DBA5B8-9E8F-4699-960A-5D8BFF0F8319}
+	EndGlobalSection
+EndGlobal
