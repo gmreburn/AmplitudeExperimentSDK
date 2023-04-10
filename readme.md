@@ -1,4 +1,4 @@
-# Amplitude SDK for C#
+# Unofficial Amplitude Experiment SDK for .NET
 
 ## Install
 Install NuGet package
