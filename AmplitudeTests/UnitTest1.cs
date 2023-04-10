@@ -1,6 +1,6 @@
-namespace AmplitudeTests
+namespace Amplitude.Experiment.Tests
 {
-    using Amplitude;
+    using Amplitude.Experiment;
     using Moq;
     using Moq.Protected;
     using System.Net;

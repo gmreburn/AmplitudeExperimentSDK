@@ -1,4 +1,4 @@
-﻿namespace Amplitude
+﻿namespace Amplitude.Experiment
 {
     using System.Collections.Specialized;
     using System.Net.Http.Headers;
