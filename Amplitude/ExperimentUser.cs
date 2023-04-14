@@ -1,4 +1,4 @@
-﻿namespace Amplitude
+﻿namespace Amplitude.Experiment
 {
     public class ExperimentUser
     {

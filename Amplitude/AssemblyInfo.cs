@@ -17,4 +17,4 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("2363fa7a-cc23-4adf-ba10-b627ad87fe58")]
 
-[assembly: InternalsVisibleTo("AmplitudeTests")]
+[assembly: InternalsVisibleTo("Amplitude.Experiment.Tests")]

@@ -4,6 +4,7 @@
     <TargetFrameworks>net48;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Amplitude SDK For C#</Title>
+    <SignAssembly>True</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>

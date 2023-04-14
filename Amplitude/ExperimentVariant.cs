@@ -1,8 +1,9 @@
-﻿namespace Amplitude
+﻿namespace Amplitude.Experiment
 {
     using System;
 
-    public class ExperimentVariant {
+    public class ExperimentVariant
+    {
         internal ExperimentVariant(string name, string value)
         {
             if (name is null)
