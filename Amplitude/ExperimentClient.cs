@@ -1,16 +1,16 @@
 ﻿namespace Amplitude.Experiment
 {
-    using System.Collections.Specialized;
-    using System.Net.Http.Headers;
-    using System.Web;
-    using Newtonsoft.Json.Converters;
     using Newtonsoft.Json;
-    using System.Dynamic;
-    using System.Net.Http;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Dynamic;
     using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading.Tasks;
+    using System.Web;
 
     public class ExperimentClient
     {
