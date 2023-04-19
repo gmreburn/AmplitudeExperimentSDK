@@ -11,7 +11,7 @@ Amplitude, but it offers an alternative solution for those who work with the .NE
 Install the unofficial .NET SDK for Amplitude Experiment via NuGet by running the following command in the Package Manager Console:
 
 ```nuget
-Install-Package AmplitudeExperiment
+Install-Package Amplitude.Experiment
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ Use the client object to get variants:
 var client = new ExperimentClient("<your-api-key>");
 var variants = await client.VariantAsync("<your-flag-key>");
 
-if(variants.First().Value === "on") {
+if(variants.First().Value == "on") {
     // the flag is enabled
 } else {
     // the flag is not enabled
