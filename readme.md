@@ -1,5 +1,10 @@
 # Unofficial Amplitude Experiment SDK for .NET
 
+[![NuGet version (Amplitude.Experiment)](https://img.shields.io/nuget/v/Amplitude.Experiment.svg)](https://www.nuget.org/packages/Amplitude.Experiment)
+![Nuget](https://img.shields.io/nuget/dt/Amplitude.Experiment)
+![GitHub issues](https://img.shields.io/github/issues/gmreburn/AmplitudeExperimentSDK)
+![GitHub last commit](https://img.shields.io/github/last-commit/gmreburn/AmplitudeExperimentSDK)
+
 Streamline your A/B testing with this .NET SDK for Amplitude Experiment that offers seamless integration of Amplitude's
 Experimentation functionality with your .NET applications. With a set of easy-to-use classes, you can quickly run A/B
 tests and identify the most effective changes in your software. The SDK is built using the official Amplitude Experiment
