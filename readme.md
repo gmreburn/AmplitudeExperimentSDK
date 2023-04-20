@@ -1,4 +1,4 @@
-# Unofficial Amplitude Experiment SDK for .NET
+# Amplitude Experiment SDK for .NET
 
 [![NuGet version (Amplitude.Experiment)](https://img.shields.io/nuget/v/Amplitude.Experiment.svg)](https://www.nuget.org/packages/Amplitude.Experiment)
 ![Nuget](https://img.shields.io/nuget/dt/Amplitude.Experiment)
