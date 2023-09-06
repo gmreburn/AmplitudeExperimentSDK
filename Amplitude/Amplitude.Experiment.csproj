@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net4.8;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0;net7.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Amplitude Experiment SDK For .NET</Title>
     <SignAssembly>True</SignAssembly>
@@ -10,7 +10,7 @@
     <PackageTags>amplitude; experiment; feature flags</PackageTags>
     <Description>Fetch variants for A/B testing and experimentation in .NET applications with Amplitude Experiments.</Description>
     <PackageProjectUrl>https://github.com/gmreburn/AmplitudeExperimentSDK/blob/master/readme.md</PackageProjectUrl>
-    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <AssemblyVersion>1.0.0.5</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Version>$(AssemblyVersion)</Version>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
