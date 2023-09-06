@@ -4,16 +4,16 @@
     using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
-    using System.Collections.Specialized;
     using System.Dynamic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
-    using System.Web;
 
     public class ExperimentClient
     {
+        private const string ApiBaseUrl = "https://api.lab.amplitude.com/v1/vardata";
+        private const string HeaderApiKey = "Api-Key";
+
         private readonly HttpClient client;
         private readonly ExperimentUser experimentUser;
 
@@ -26,20 +26,17 @@
         public ExperimentClient(string deploymentKey, ExperimentUser experimentUser = null)
             : this(new HttpClient { DefaultRequestHeaders = { Authorization = new AuthenticationHeaderValue("Api-Key", deploymentKey) } }, experimentUser)
         {
-            if (deploymentKey is null)
+            if (string.IsNullOrEmpty(deploymentKey))
             {
                 throw new ArgumentNullException(nameof(deploymentKey));
             }
+            this.client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(HeaderApiKey, deploymentKey);
         }
 
         internal ExperimentClient(HttpClient client, ExperimentUser experimentUser = null)
         {
-            if (client is null)
-            {
-                throw new ArgumentNullException(nameof(client));
-            }
+            this.client = client ?? throw new ArgumentNullException(nameof(client)); 
 
-            this.client = client;
             this.experimentUser = experimentUser;
         }
 
@@ -50,35 +47,22 @@
         /// <param name="experimentUser">The user to remote fetch variants for. Overrides the user set during initialization of ExperimentClient.</param>
         /// <returns>Evaluated variants for each flag configured</returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<IEnumerable<ExperimentVariant>> VariantAsync(string flagKey = null, ExperimentUser experimentUser = null)
+        public async Task<IEnumerable<ExperimentVariant>> VariantAsync(string flagKey = null, ExperimentUser customUser = null)
         {
             // https://api.lab.amplitude.com/v1/vardata?&user_id=a&device_id=b&flag_key=f&context=c
-            var user_id = "";
-            var device_id = "";
-            var context = "";
-            if (experimentUser != null)
-            {
-                user_id = experimentUser.UserId;
-                device_id = experimentUser.DeviceId;
-                context = experimentUser.Context;
-            }
-            else if (this.experimentUser != null)
-            {
-                user_id = this.experimentUser.UserId;
-                device_id = this.experimentUser.DeviceId;
-                context = this.experimentUser.Context;
-            }
+            var user_id = customUser?.UserId ?? this.experimentUser?.UserId ?? "";
+            var device_id = customUser?.DeviceId ?? this.experimentUser?.DeviceId ?? "";
+            var context = customUser?.Context ?? this.experimentUser?.Context ?? "";
 
-            var qs = QueryStringHelper(new NameValueCollection{
-                { "user_id", user_id },
-                { "device_id", device_id },
-                { "flag_key", flagKey },
-                { "context", context }
-            });
-            var uriBuilder = new UriBuilder("https", "api.lab.amplitude.com", 443, "/v1/vardata") { Query = qs };
+            var queryString = $"user_id={user_id}&device_id={device_id}&flag_key={flagKey}&context={context}";
+            var uriBuilder = new UriBuilder(ApiBaseUrl)
+            {
+                Query = queryString
+            };
+
             var resp = await client.GetAsync(uriBuilder.Uri);
 
-            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            if (resp.IsSuccessStatusCode)
             {
                 var converter = new ExpandoObjectConverter();
                 var content = await resp.Content.ReadAsStringAsync();
@@ -92,33 +76,15 @@
 
                 return variants;
             }
-            else if (resp.StatusCode == System.Net.HttpStatusCode.BadRequest)
-            {
-                throw new NotImplementedException("400 - Bad request");
-            }
             else if (resp.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
-                throw new NotImplementedException("401 - Unauthorized");
+                throw new UnauthorizedAccessException("Invalid API Key.");
             }
             else
             {
-                throw new NotImplementedException(resp.StatusCode.ToString());
+                resp.EnsureSuccessStatusCode();
+                throw new NotImplementedException("Unreachable code.");
             }
-        }
-
-        static string QueryStringHelper(NameValueCollection query)
-        {
-            // omitted argument checking
-
-            // sneaky way to get a HttpValueCollection (which is internal)
-            var collection = HttpUtility.ParseQueryString(string.Empty);
-
-            foreach (var key in query.Cast<string>().Where(key => !string.IsNullOrEmpty(query[key])))
-            {
-                collection[key] = query[key];
-            }
-
-            return collection.ToString();
         }
     }
 }
